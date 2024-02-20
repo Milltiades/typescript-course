@@ -9,7 +9,6 @@
 
 // console.log(c * b)
 
-
 /**  lesson 2 */
 
 // let myName: string = 'Gedeon'
@@ -26,8 +25,8 @@
 //     return a + b
 // }
 
-// let postId: string | number 
-// let isActive: number | boolean 
+// let postId: string | number
+// let isActive: number | boolean
 
 // let re: RegExp = /\w+/g
 
@@ -40,7 +39,6 @@
 
 // stringArr[0] = 'John'
 // stringArr.push('hey')
-
 
 // guitars[0] = 1984
 // guitars.unshift('Jim')
@@ -111,9 +109,7 @@
 
 // console.log(Grade.C)
 
-
 /** lesson 4 */
-
 
 // Type Aliases
 
@@ -150,10 +146,9 @@
 //     return c - d
 // }
 
-
 // type mathFunction = (a: number, b: number) => number
 
-// // interface mathFunction { 
+// // interface mathFunction {
 // //     (a: number, b: number) : number}
 
 // let multiply: mathFunction = function(c, d) {
@@ -209,12 +204,10 @@
 //     return createError('This should never happen!')
 //  }
 
-
 /** lesson 5 */
 // type One = string
 // type Two = string | number
 // type Three = 'hello'
-
 
 // // convert to more or less specific
 // let a : One = 'hello'
@@ -238,133 +231,223 @@
 // (10 as unknown) as string
 
 // // The DOM
-// const img = document.querySelector('img')! 
+// const img = document.querySelector('img')!
 // const myImg = document.getElementById('#img') as HTMLImageElement
-// const nextImg = <HTMLImageElement>document.getElementById('#img') 
+// const nextImg = <HTMLImageElement>document.getElementById('#img')
 
 // img.src
 // myImg.src
 
 /** lesson 6 */
 
-class Coder {
+// class Coder {
 
-    secondLang!: string
+//     secondLang!: string
 
-    constructor(
-        public readonly name: string, 
-        public music: string, 
-        private age:number, 
-        protected lang: string = 'Typescript'
-        ) {
-        this.name = name
-        this.music = music
-        this.age = age
-        this.lang = lang
-    }
-    public getAge() {
-        return `Hello, I'm ${this.age}`
-    }
+//     constructor(
+//         public readonly name: string,
+//         public music: string,
+//         private age:number,
+//         protected lang: string = 'Typescript'
+//         ) {
+//         this.name = name
+//         this.music = music
+//         this.age = age
+//         this.lang = lang
+//     }
+//     public getAge() {
+//         return `Hello, I'm ${this.age}`
+//     }
+// }
+
+// const Dave = new Coder('Dave', 'Rock', 42)
+// console.log(Dave.getAge())
+// // console.log(Dave.age)
+// // console.log(Dave.lang)
+
+// class WebDev extends Coder {
+//     constructor(
+//         public computer: string,
+//         name: string,
+//         music: string,
+//         age: number
+//         ) {
+//             super(name, music, age)
+//             this.computer = computer
+//     }
+//     public getLang() {
+//         return `I write ${this.lang}`
+//     }
+// }
+
+// const Sara = new WebDev('Mac', 'Sara', 'Lofi', 25)
+// console.log(Sara.getLang())
+// // console.log(Sara.age)
+// // console.log(Sara.lang)
+
+// ///
+
+// interface Musician {
+//     name: string,
+//     instrument: string,
+//     play(action: string):string
+// }
+
+// class Guitarist implements Musician {
+//     name: string
+//     instrument: string
+
+//     constructor(name: string, instrument: string) {
+//         this.name = name
+//         this.instrument = instrument
+//     }
+//     play(action:string) {
+//         return `${this.name} ${action} the ${this.instrument}`
+//     }
+// }
+
+// const Page = new Guitarist('Jimmy', 'guitar')
+
+// console.log(Page.play('strums'))
+// ///
+
+// class Peeps {
+//     static count: number = 0
+
+//     static getCount(): number {
+//         return Peeps.count
+//     }
+
+//     public id: number
+//     constructor(public name: string) {
+//         this.name = name
+//         this.id = ++Peeps.count
+//     }
+// }
+
+// const John = new Peeps('John')
+// const Steve = new Peeps('Steve')
+// const Amy = new Peeps('Amy')
+
+// console.log(Amy.id)
+// console.log(Steve.id)
+// console.log(John.id)
+// console.log(Peeps.count)
+// ///
+
+// class Bands {
+//     private dataState: string[]
+
+//     constructor() {
+//         this.dataState = []
+//     }
+//     public get data() : string[] {
+//          return this.dataState
+//     }
+//     public set data(value: string[]) {
+//         if (Array.isArray(value) && value.every(el =>
+//             typeof el === 'string')){
+//                 this.dataState = value
+//                 return
+//             } else throw new Error('Param is not an array of strings')
+//     }
+// }
+
+// const MyBands = new Bands()
+// MyBands.data = ['Neil Young', 'Led Zep']
+// console.log(MyBands.data)
+// MyBands.data = [...MyBands.data, 'Giga Kak']
+// console.log(MyBands.data)
+
+/** lesson 7 */
+
+// Index Signatures
+
+// interface TransactionObj {
+//    readonly [index: string]: number
+// }
+
+interface TransactionObj {
+  readonly [index: string]: number;
+  Pizza: number;
+  Books: number;
+  Job: number;
 }
+const todaysTransactions: TransactionObj = {
+  Pizza: -10,
+  Books: -5,
+  Job: 50,
+};
+console.log(todaysTransactions.Pizza);
+console.log(todaysTransactions["Pizza"]);
 
-const Dave = new Coder('Dave', 'Rock', 42)
-console.log(Dave.getAge())
-// console.log(Dave.age)
-// console.log(Dave.lang)
+let prop: string = "Pizza";
 
-class WebDev extends Coder {
-    constructor(
-        public computer: string,
-        name: string,
-        music: string,
-        age: number
-        ) {
-            super(name, music, age)
-            this.computer = computer
-    }
-    public getLang() {
-        return `I write ${this.lang}`
-    }
-}
+console.log(todaysTransactions[prop]);
 
-const Sara = new WebDev('Mac', 'Sara', 'Lofi', 25)
-console.log(Sara.getLang())
-// console.log(Sara.age)
-// console.log(Sara.lang)
+const todayNet = (transactions: TransactionObj): number => {
+  let total = 0;
+  for (const transaction in transactions) {
+    total += transactions[transaction];
+  }
+  return total;
+};
+
+console.log(todayNet(todaysTransactions));
+
+// todaysTransactions.Pizza = 40
+
+console.log(todaysTransactions["Giga"]);
 
 ///
 
-interface Musician {
-    name: string,
-    instrument: string,
-    play(action: string):string
+interface Student {
+  // [key: string]: string | number | number[] | undefined
+  name: string;
+  GPA: number;
+  classes?: number[];
 }
 
-class Guitarist implements Musician {
-    name: string
-    instrument: string
+const student: Student = {
+  name: "Giga",
+  GPA: 3.5,
+  classes: [100, 200],
+};
 
-    constructor(name: string, instrument: string) {
-        this.name = name
-        this.instrument = instrument
-    }
-    play(action:string) {
-        return `${this.name} ${action} the ${this.instrument}`
-    }
+// console.log(student.test)
+
+for (const key in student) {
+  console.log(`${key}: ${student[key as keyof Student]}`);
 }
 
-const Page = new Guitarist('Jimmy', 'guitar')
+Object.keys(student).map((key) => {
+  console.log(student[key as keyof typeof student]);
+});
 
-console.log(Page.play('strums'))
+const logStudentKey = (student: Student, key: keyof Student): void => {
+  console.log(`Student ${key} : ${student[key]}`);
+};
+
+logStudentKey(student, "GPA");
+logStudentKey(student, "name");
+logStudentKey(student, "classes");
+
 ///
 
-class Peeps {
-    static count: number = 0
+// interface Incomes {
+//     [key: string]: number
+// }
 
-    static getCount(): number {
-        return Peeps.count
-    }
+type Streams = "salary" | "bonus" | "sidehustle";
 
-    public id: number
-    constructor(public name: string) {
-        this.name = name
-        this.id = ++Peeps.count
-    }
+type Incomes = Record<Streams, number | string>;
+
+const monthlyIncomes: Incomes = {
+  salary: 500,
+  bonus: 100,
+  sidehustle: 250,
+};
+
+for (const revenue in monthlyIncomes) {
+    console.log(monthlyIncomes[revenue as keyof Incomes])
 }
-
-const John = new Peeps('John')
-const Steve = new Peeps('Steve')
-const Amy = new Peeps('Amy')
-
-console.log(Amy.id)
-console.log(Steve.id)
-console.log(John.id)
-console.log(Peeps.count)
-///
-
-
-class Bands {
-    private dataState: string[]
-
-    constructor() {
-        this.dataState = []
-    }
-    public get data() : string[] {
-         return this.dataState
-    }
-    public set data(value: string[]) {
-        if (Array.isArray(value) && value.every(el => 
-            typeof el === 'string')){
-                this.dataState = value
-                return
-            } else throw new Error('Param is not an array of strings')
-    }
-}
-
-const MyBands = new Bands()
-MyBands.data = ['Neil Young', 'Led Zep']
-console.log(MyBands.data)
-MyBands.data = [...MyBands.data, 'Giga Kak']
-console.log(MyBands.data)
-
-
