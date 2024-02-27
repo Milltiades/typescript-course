@@ -3,53 +3,53 @@ import { Section } from "./components/Section";
 import Counter from "./components/Counter";
 import List from "./components/List";
 
-import {
-  useEffect,
-  useState,
-  useCallback,
-  MouseEvent,
-  KeyboardEvent,
-  useMemo,
-  useRef,
-} from "react";
+// import {
+//   useEffect,
+//   useState,
+//   useCallback,
+//   MouseEvent,
+//   KeyboardEvent,
+//   useMemo,
+//   useRef,
+// } from "react";
 
-interface User {
-  id: number;
-  username: string;
-}
+// interface User {
+//   id: number;
+//   username: string;
+// }
 
-type fibFunc = (n: number) => number;
+// type fibFunc = (n: number) => number;
 
-const fib: fibFunc = (n) => {
-  if (n < 2) return n;
-  return fib(n - 1) + fib(n - 2);
-};
+// const fib: fibFunc = (n) => {
+//   if (n < 2) return n;
+//   return fib(n - 1) + fib(n - 2);
+// };
 
-const myNum: number = 37;
+// const myNum: number = 37;
 
 function App() {
-  const [count, setCount] = useState<number>(0);
-  const [users, setUsers] = useState<User[] | null>(null);
+  // const [count, setCount] = useState<number>(0);
+  // const [users, setUsers] = useState<User[] | null>(null);
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  // const inputRef = useRef<HTMLInputElement>(null);
 
-  console.log(inputRef?.current);
-  console.log(inputRef?.current?.value);
+  // console.log(inputRef?.current);
+  // console.log(inputRef?.current?.value);
 
-  useEffect(() => {
-    console.log("mounting");
-    console.log("Users:", users);
-    return () => console.log("onmounting");
-  }, [users]);
+  // useEffect(() => {
+  //   console.log("mounting");
+  //   console.log("Users:", users);
+  //   return () => console.log("onmounting");
+  // }, [users]);
 
-  const addTwo = useCallback(
-    (
-      e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
-    ): void => setCount((prev) => prev + 2),
-    []
-  );
+  // const addTwo = useCallback(
+  //   (
+  //     e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  //   ): void => setCount((prev) => prev + 2),
+  //   []
+  // );
 
-  const result = useMemo<number>(() => fib(myNum), [myNum]);
+  // const result = useMemo<number>(() => fib(myNum), [myNum]);
 
   return (
     <>
@@ -60,12 +60,13 @@ function App() {
         items={["Coffee", "Tacos", "Code"]}
         render={(item: string) => <span className="bold">{item}</span>}
       /> */}
-      <div>
+      {/* <div>
         <h1>{count}</h1>
         <button onClick={addTwo}>Add</button>
         <h2>{result}</h2>
         <input ref={inputRef} type="text" />
-      </div>
+      </div> */}
+      <Counter>{(num: number) => <>Current Count: {num}</>}</Counter>
     </>
   );
 }
