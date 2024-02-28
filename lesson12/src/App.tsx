@@ -2,6 +2,8 @@ import Heading from "./components/Heading";
 import { Section } from "./components/Section";
 import Counter from "./components/Counter";
 import List from "./components/List";
+import { CounterProvider } from "./context/CounterContext";
+import { initState } from "./context/CounterContext";
 
 // import {
 //   useEffect,
@@ -66,7 +68,9 @@ function App() {
         <h2>{result}</h2>
         <input ref={inputRef} type="text" />
       </div> */}
-      <Counter>{(num: number) => <>Current Count: {num}</>}</Counter>
+      <CounterProvider count={initState.count} text={initState.text}>
+        <Counter>{(num: number) => <>Current Count: {num}</>}</Counter>
+      </CounterProvider>
     </>
   );
 }
